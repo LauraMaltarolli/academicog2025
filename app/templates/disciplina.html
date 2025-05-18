@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Página Inicial</title>
+    <!-- Incluindo Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-darkbg-success">
+        <a class="navbar-brand" href="/">Sistema Academico G</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/pessoa/">Pessoa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/instituicao/">Instituicao de Ensino</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/curso/">Curso</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/turno/">Turno</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/disciplina/">Disciplina</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/disciplina_curso/">Disciplina por Curso</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/turma/">Turma</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/matricula/">Matricula</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/ocupacao/">Ocupação</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/area_saber/">Areas do Saber</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/avaliacao/">Avaliação</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/tipo_avaliacao/">Tipo de Avaliação</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/cidade/">Cidade</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/frequencia/">Frequencia</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/ocorrencia/">Ocorrência</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/admin/">Administração</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <b>
+                <li{% if message.tags %} class="{{message.tags }}" {% endif %} style="color: red;">{{message }}</li>
+            </b>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <h2 class="mb-4">Tabela das disciplinas</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Area do saber</th>
+                    <th scope="col">Professor</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for disciplinas in disciplinas %}
+                <tr>
+                    <td>{{ disciplinas.nome }}</td>
+                    <td>{{ disciplinas.area_do_saber }}</td>
+                    <td>{{ disciplinas.professor.nome }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- Incluindo jQuery e Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dst/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
